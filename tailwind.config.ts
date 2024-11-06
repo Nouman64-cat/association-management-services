@@ -9,8 +9,9 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        background: "var(--background)",
-        foreground: "var(--foreground)",
+        pinkish: '#FF49A1',   // Vibrant pink from the left icon
+        bluish: '#2DA8F8',    // Bright blue from the center icon
+        orangish: '#FFA629',  // Warm yellow-orange from the right icon
       },
       fontFamily: {
         axiforma: ['Axiforma', 'sans-serif'],
