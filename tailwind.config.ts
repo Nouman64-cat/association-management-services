@@ -14,6 +14,7 @@ const config: Config = {
         orangish: '#FFA629',  // Warm yellow-orange from the right icon
         heading: '#363636',   // Dark gray color for headings
         subheading: '#737373',
+        rebrand: '#6961F9',
       },
       fontFamily: {
         axiforma: ['Axiforma', 'sans-serif'],

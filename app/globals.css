@@ -28,7 +28,22 @@ html {
 }
 
 
-  
+@keyframes fly {
+  0% {
+    transform: translate(0, 0);
+  }
+  50% {
+    transform: translate(5px, -5px);
+  }
+  100% {
+    transform: translate(0, 0);
+  }
+}
+
+.hover-fly:hover .icon-fly {
+  animation: fly 0.5s ease-in-out infinite;
+}
+
   /* styles/globals.css */
 
 @keyframes float1 {
