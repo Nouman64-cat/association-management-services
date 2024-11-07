@@ -12,7 +12,8 @@ const config: Config = {
         pinkish: '#FF49A1',   // Vibrant pink from the left icon
         bluish: '#2DA8F8',    // Bright blue from the center icon
         orangish: '#FFA629',  // Warm yellow-orange from the right icon
-        heading: '#333333',   // Dark gray color for headings
+        heading: '#363636',   // Dark gray color for headings
+        subheading: '#737373',
       },
       fontFamily: {
         axiforma: ['Axiforma', 'sans-serif'],
