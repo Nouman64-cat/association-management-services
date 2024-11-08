@@ -1,10 +1,10 @@
 import React from 'react';
-import { FaBuilding, FaLightbulb, FaRocket } from 'react-icons/fa';
+import { FaRegBuilding, FaRegLightbulb, FaRegPaperPlane } from 'react-icons/fa';
 
 const services = [
-  { title: "Administration Services", description: "Flexible, scalable pricing for all association needs.", icon: <FaBuilding /> },
-  { title: "Consulting Services", description: "Strategies for growth, member retention, and governance.", icon: <FaLightbulb /> },
-  { title: "Accelerated Startup Package", description: "Get your association up and running quickly.", icon: <FaRocket /> }
+  { title: "Administration Services", description: "Flexible, scalable pricing for all association needs.", icon: <FaRegBuilding /> },
+  { title: "Consulting Services", description: "Strategies for growth, member retention, and governance.", icon: <FaRegLightbulb /> },
+  { title: "Accelerated Startup Package", description: "Get your association up and running quickly.", icon: <FaRegPaperPlane /> }
 ];
 
 const ServicesHighlights: React.FC = () => {

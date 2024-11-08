@@ -7,15 +7,24 @@ const caseStudies = [
 
 const CaseStudiesSection: React.FC = () => {
   return (
-    <section className="py-12 bg-gray-100 text-center">
-      <h2 className="text-2xl font-bold font-axiforma mb-8">Case Studies</h2>
-      <div className="flex flex-wrap justify-center gap-8">
-        {caseStudies.map((caseStudy, index) => (
-          <div key={index} className="bg-white p-6 rounded-lg shadow-lg max-w-xs">
-            <h3 className="text-xl font-semibold font-axiforma">{caseStudy.title}</h3>
-            <p className="text-gray-700 mt-2">{caseStudy.summary}</p>
-          </div>
-        ))}
+    <section className="py-16 px-4 bg-light-grayish text-center">
+      <div className="max-w-4xl mx-auto">
+        <h2 className="text-4xl font-extrabold font-axiforma mb-10 text-heading">
+          <span className="bg-gradient-to-r from-bluish via-pinkish to-orangish bg-clip-text text-transparent">
+            Case Studies
+          </span>
+        </h2>
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
+          {caseStudies.map((caseStudy, index) => (
+            <div
+              key={index}
+              className="bg-white p-8 rounded-3xl shadow-lg hover:shadow-xl transition-shadow duration-300 text-left"
+            >
+              <h3 className="text-xl font-semibold font-axiforma mb-4 text-heading">{caseStudy.title}</h3>
+              <p className="text-gray-700 text-base">{caseStudy.summary}</p>
+            </div>
+          ))}
+        </div>
       </div>
     </section>
   );

@@ -8,15 +8,24 @@ const guides = [
 
 const GuidesSection: React.FC = () => {
   return (
-    <section className="py-12 bg-gray-100 text-center">
-      <h2 className="text-2xl font-bold font-axiforma mb-8">Guides and Whitepapers</h2>
-      <div className="flex flex-wrap justify-center gap-8">
-        {guides.map((guide, index) => (
-          <div key={index} className="bg-white p-6 rounded-lg shadow-lg max-w-xs">
-            <h3 className="text-xl font-semibold font-axiforma">{guide.title}</h3>
-            <p className="text-gray-700">{guide.description}</p>
-          </div>
-        ))}
+    <section className="py-16 px-4 bg-light-grayish text-center">
+      <div className="max-w-4xl mx-auto">
+        <h2 className="text-4xl font-extrabold font-axiforma mb-10 text-heading">
+          <span className="bg-gradient-to-r from-bluish via-pinkish to-orangish bg-clip-text text-transparent">
+            Guides and Whitepapers
+          </span>
+        </h2>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+          {guides.map((guide, index) => (
+            <div
+              key={index}
+              className="bg-white p-8 rounded-3xl shadow-lg hover:shadow-xl transition-shadow duration-300 text-left"
+            >
+              <h3 className="text-xl font-semibold font-axiforma mb-4 text-heading">{guide.title}</h3>
+              <p className="text-gray-700 text-base">{guide.description}</p>
+            </div>
+          ))}
+        </div>
       </div>
     </section>
   );

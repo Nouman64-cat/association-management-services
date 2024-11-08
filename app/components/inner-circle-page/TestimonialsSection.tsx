@@ -8,15 +8,24 @@ const testimonials = [
 
 const TestimonialsSection: React.FC = () => {
   return (
-    <section className="py-12 bg-white text-center">
-      <h2 className="text-2xl font-bold font-axiforma mb-8">What Our Inner Circle Members Say</h2>
-      <div className="flex flex-wrap justify-center gap-8">
-        {testimonials.map((testimonial, index) => (
-          <div key={index} className="bg-gray-100 p-6 rounded-lg shadow-lg max-w-xs">
-            <p className="italic text-gray-800">"{testimonial.quote}"</p>
-            <p className="font-semibold mt-4">– {testimonial.name}</p>
-          </div>
-        ))}
+    <section className="py-16 px-4 bg-light-grayish text-center">
+      <div className="max-w-4xl mx-auto">
+        <h2 className="text-4xl font-extrabold font-axiforma mb-10 text-heading">
+          <span className="bg-gradient-to-r from-bluish via-pinkish to-orangish bg-clip-text text-transparent">
+            What Our Inner Circle Members Say
+          </span>
+        </h2>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          {testimonials.map((testimonial, index) => (
+            <div
+              key={index}
+              className="bg-white p-8 rounded-3xl shadow-lg hover:shadow-xl transition-shadow duration-300 text-left"
+            >
+              <p className="italic text-lg text-gray-700 mb-4">"{testimonial.quote}"</p>
+              <p className="font-semibold text-heading">– {testimonial.name}</p>
+            </div>
+          ))}
+        </div>
       </div>
     </section>
   );
