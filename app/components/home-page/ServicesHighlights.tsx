@@ -1,20 +1,24 @@
 import React from 'react';
+import { FaBuilding, FaLightbulb, FaRocket } from 'react-icons/fa';
 
 const services = [
-  { title: "Administration Services", description: "Flexible, scalable pricing for all association needs." },
-  { title: "Consulting Services", description: "Strategies for growth, member retention, and governance." },
-  { title: "Accelerated Startup Package", description: "Get your association up and running quickly." }
+  { title: "Administration Services", description: "Flexible, scalable pricing for all association needs.", icon: <FaBuilding /> },
+  { title: "Consulting Services", description: "Strategies for growth, member retention, and governance.", icon: <FaLightbulb /> },
+  { title: "Accelerated Startup Package", description: "Get your association up and running quickly.", icon: <FaRocket /> }
 ];
 
 const ServicesHighlights: React.FC = () => {
   return (
-    <section className="py-12 bg-gray-100 text-center">
-      <h2 className="text-2xl font-bold font-axiforma mb-8">Our Services</h2>
-      <div className="flex flex-wrap justify-center gap-8">
+    <section className="py-16 px-4 bg-light-grayish text-center">
+      <h2 className="text-4xl font-extrabold font-axiforma mb-8 text-heading">
+        Our <span className="bg-gradient-to-r from-bluish via-pinkish to-orangish bg-clip-text text-transparent">Services</span>
+      </h2>
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-5xl mx-auto">
         {services.map((service, index) => (
-          <div key={index} className="bg-white p-6 rounded-lg shadow-lg max-w-xs">
-            <h3 className="text-xl font-semibold font-axiforma mb-2">{service.title}</h3>
-            <p className="text-gray-700">{service.description}</p>
+          <div key={index} className="bg-white p-8 rounded-3xl shadow-lg flex flex-col items-center text-center transition-transform transform hover:scale-105">
+            <div className="text-rebrand text-4xl mb-4">{service.icon}</div>
+            <h3 className="text-xl font-semibold font-axiforma mb-2 text-heading">{service.title}</h3>
+            <p className="text-gray-600 text-base">{service.description}</p>
           </div>
         ))}
       </div>

@@ -38,7 +38,7 @@ const DesktopNavbar: React.FC = () => {
             height={50}
           />
           <div className='flex flex-col'>
-            <h1 className='font-axiforma text-orangish leading-none'>AMS</h1>
+            <h1 className='font-axiforma bg-gradient-to-r from-bluish via-pinkish to-orangish bg-clip-text text-transparent leading-none'>AMS</h1>
             <p className='text-[12px] leading-tight text-zinc-500'>Association Management Services</p>
           </div>
         </div>

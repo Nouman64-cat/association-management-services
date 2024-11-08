@@ -1,17 +1,25 @@
-import React from 'react';
+import React from "react";
+import { FaTelegramPlane } from "react-icons/fa";
 
 const InnerCircleLink: React.FC = () => {
   return (
-    <section className="py-12 text-center bg-gradient-to-r from-pinkish via-bluish to-orangish text-white">
-      <h2 className="text-2xl font-bold font-axiforma mb-4">
-        Join Our Inner Circle Mastermind Group
-      </h2>
-      <p className="mb-6">
+    <section className="py-12 text-center bg-slate-100">
+      <h2 className="text-4xl font-bold font-axiforma mb-4 text-heading">
+        Join Our Inner Circle <span className="bg-gradient-to-r from-bluish via-pinkish to-orangish bg-clip-text text-transparent">
+          Mastermind
+        </span> Group
+      </h2> 
+      <p className="mb-6 text-subheading">
         Connect with other leaders and access exclusive tips and strategies.
       </p>
-      <button className="bg-white text-pinkish font-axiforma px-6 py-3 rounded-full hover:bg-opacity-80">
-        Join Now
-      </button>
+      <div className="flex justify-center">
+        <button className="flex items-center gap-4 bg-gradient-to-r from-bluish via-pinkish to-orangish text-white font-axiforma px-14 py-3 rounded-lg hover:bg-opacity-80 hover-fly transition duration-300">
+          Join Now
+          <span className="icon-fly">
+            <FaTelegramPlane className="text-xl" />
+          </span>
+        </button>
+      </div>
     </section>
   );
 };
