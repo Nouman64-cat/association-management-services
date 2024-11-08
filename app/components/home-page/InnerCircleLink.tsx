@@ -4,7 +4,7 @@ import { FaTelegramPlane } from "react-icons/fa";
 const InnerCircleLink: React.FC = () => {
   return (
     <section className="py-12 text-center bg-slate-100">
-      <h2 className="text-4xl font-bold font-axiforma mb-4 text-heading">
+      <h2 className="text-4xl font-extrabold font-axiforma mb-4 text-heading">
         Join Our Inner Circle <span className="bg-gradient-to-r from-bluish via-pinkish to-orangish bg-clip-text text-transparent">
           Mastermind
         </span> Group

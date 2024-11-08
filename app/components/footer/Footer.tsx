@@ -23,7 +23,7 @@ const Footer: React.FC = () => {
 
         {/* Quick Links */}
         <div className="flex flex-col items-center md:items-start space-y-4">
-          <h3 className="font-bold text-lg text-heading">Quick Links</h3>
+          <h3 className="font-extrabold text-lg text-heading">Quick Links</h3>
           <Link href="/" className="hover:text-orangish">Home</Link>
           <Link href="/about" className="hover:text-orangish">About Us</Link>
           <Link href="/inner-circle" className="hover:text-orangish">Inner Circle</Link>
