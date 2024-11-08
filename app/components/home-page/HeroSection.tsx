@@ -1,9 +1,15 @@
 "use client";
 
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { FaTelegramPlane } from 'react-icons/fa';
+import {fetchTestimonials} from '@/graphql'
+import { Testimonial } from '@/interfaces/testimonials';
+
+
 
 const HeroSection: React.FC = () => {
+
+
   return (
     <section className="py-16 text-center">
       <h1 className="text-5xl font-extrabold font-axiforma mb-4 text-heading leading-snug">
