@@ -27,25 +27,26 @@ export const fetchTestimonials = async () => {
   }
 };
 
-// Function to fetch service details
-export const fetchServiceDetails = async () => {
-  const query = gql`
-    query GetServiceDetails {
-      serviceDetails {
-        serviceName
-        description
-      }
-    }
-  `;
 
-  try {
-    const result = await graphqlAPI.request(query);
-    return result.serviceDetails;
-  } catch (error) {
-    console.error("Error fetching service details:", error);
-    return [];
-  }
-};
+export const fetchServiceDetails = async () => {
+    const query = gql`
+      query GetServiceDetails {
+        serviceDetails {
+          serviceName
+          description
+          category
+        }
+      }
+    `;
+  
+    try {
+      const result = await graphqlAPI.request(query);
+      return result.serviceDetails;
+    } catch (error) {
+      console.error("Error fetching service details:", error);
+      return [];
+    }
+  };
 
 // New function to fetch team bios
 export const fetchTeamBios = async () => {
@@ -67,6 +68,32 @@ export const fetchTeamBios = async () => {
     return result.teamBios;
   } catch (error) {
     console.error("Error fetching team bios:", error);
+    return [];
+  }
+};
+
+
+export const fetchGuides = async () => {
+  const query = gql`
+    query GetGuides {
+      guides {
+        id
+        guideTitle
+        guideDescription
+        downloadableFile {
+          id
+          fileName
+          url
+        }
+      }
+    }
+  `;
+
+  try {
+    const result = await graphqlAPI.request(query);
+    return result.guides;
+  } catch (error) {
+    console.error("Error fetching guides:", error);
     return [];
   }
 };

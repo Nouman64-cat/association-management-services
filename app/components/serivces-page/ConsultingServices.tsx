@@ -1,18 +1,24 @@
-import React from 'react';
+"use client"
+import React, { useState, useEffect } from 'react';
 import { FaCheckCircle } from 'react-icons/fa';
-
-const consultingServices = [
-  "Membership growth strategies",
-  "Membership software selection",
-  "Membership benefits and levels",
-  "Social media and communication strategies",
-  "Sponsorship opportunities",
-  "Board structure and governance",
-  "Legal requirements",
-  "Project and general management"
-];
+import { fetchServiceDetails } from '@/graphql';
+import { Services } from '@/interfaces/services';
 
 const ConsultingServices: React.FC = () => {
+  const [consultingServices, setConsultingServices] = useState<Services[]>([]);
+
+  const loadConsultingServices = async () => {
+    const allServices = await fetchServiceDetails();
+    const filteredServices = allServices.filter(
+      (service: Services) => service.category === "Consulting"
+    );
+    setConsultingServices(filteredServices);
+  };
+
+  useEffect(() => {
+    loadConsultingServices();
+  }, []);
+
   return (
     <section className="py-16 px-4 bg-light-grayish text-center">
       <h2 className="text-4xl font-extrabold font-axiforma mb-8 text-heading">
@@ -25,9 +31,12 @@ const ConsultingServices: React.FC = () => {
       </p>
       <ul className="grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-4xl mx-auto text-left">
         {consultingServices.map((service, index) => (
-          <li key={index} className="flex items-start space-x-3 bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow">
+          <li
+            key={index}
+            className="flex items-start space-x-3 bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow"
+          >
             <FaCheckCircle className="text-rebrand text-2xl mt-1" />
-            <span className="text-lg font-axiforma text-heading">{service}</span>
+            <span className="text-lg font-axiforma text-heading">{service.serviceName}</span>
           </li>
         ))}
       </ul>

@@ -1,15 +1,24 @@
-import React from 'react';
+"use client"
+import React, { useState, useEffect } from 'react';
 import { FaCheckCircle } from 'react-icons/fa';
-
-const administrationServices = [
-  "Membership management",
-  "Event management",
-  "Compliance and legal support",
-  "Financial administration",
-  "Communication management"
-];
+import { fetchServiceDetails } from '@/graphql';
+import { Services } from '@/interfaces/services';
 
 const AdministrationServices: React.FC = () => {
+  const [administrationServices, setAdministrationServices] = useState<Services[]>([]);
+
+  const loadAdministrationServices = async () => {
+    const allServices = await fetchServiceDetails();
+    const filteredServices = allServices
+      .filter((service: Services) => service.category === "Administration")
+      .slice(0, 2); // Display only the first two services in the Administration category
+    setAdministrationServices(filteredServices);
+  };
+
+  useEffect(() => {
+    loadAdministrationServices();
+  }, []);
+
   return (
     <section className="py-16 bg-light-grayish">
       <div className="text-center mb-12">
@@ -27,14 +36,14 @@ const AdministrationServices: React.FC = () => {
         {administrationServices.map((service, index) => (
           <div
             key={index}
-            className="bg-white border border-transparent hover:border-gradient-to-r hover:from-bluish hover:via-pinkish hover:to-orangish shadow-md hover:shadow-lg transition-all rounded-3xl p-8 text-left"
+            className="bg-white max-w-5xl border border-transparent hover:border-gradient-to-r hover:from-bluish hover:via-pinkish hover:to-orangish shadow-md hover:shadow-lg transition-all rounded-3xl p-8 text-left"
           >
             <div className="flex items-center mb-4">
               <FaCheckCircle className="text-rebrand text-2xl mr-3" />
-              <h3 className="text-xl font-semibold text-heading">{service}</h3>
+              <h3 className="text-xl font-semibold text-heading">{service.serviceName}</h3>
             </div>
             <p className="text-gray-600">
-              Our {service.toLowerCase()} provides tailored solutions to support your association’s unique needs.
+              Our {service.serviceName.toLowerCase()} provides tailored solutions to support your association’s unique needs.
             </p>
           </div>
         ))}
