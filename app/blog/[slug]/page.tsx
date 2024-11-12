@@ -9,7 +9,7 @@ interface BlogPageProps {
 }
 
 const BlogPage = async ({ params }: BlogPageProps) => {
-  const slug = params.slug; // Access params directly without awaiting
+  const { slug } = await params; // Explicitly await params here
 
   if (!slug) {
     notFound();
