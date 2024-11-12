@@ -9,4 +9,13 @@ export interface Blog {
       html: string;
     };
   }
+
+  // In your blogs interface file
+export interface BlogDetail {
+  title: string;
+  content: {
+    html: string;
+  };
+}
+
   

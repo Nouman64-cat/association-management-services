@@ -1,4 +1,4 @@
-import { Blog } from "@/interfaces/blogs";
+import { Blog, BlogDetail } from "@/interfaces/blogs";
 import { GraphQLClient, gql } from "graphql-request";
 
 const URL = process.env.NEXT_PUBLIC_GRAPHQL_URL_ENDPOINT as string;
@@ -54,28 +54,40 @@ interface BlogContent {
     };
   }
   
-  export const fetchBlogBySlug = async (slug: string): Promise<BlogContent | null> => {
-    const query = gql`
-      query GetBlogBySlug($slug: String!) {
-        blog(where: { slug: $slug }) {
-          title
-          content {
-            html
-          }
+// Define the expected response structure for the query
+interface BlogResponse {
+  blog: {
+    title: string;
+    content: {
+      html: string;
+    };
+  };
+}
+
+// Function to fetch blog by slug
+export const fetchBlogBySlug = async (slug: string): Promise<BlogDetail | null> => {
+  const query = gql`
+    query GetBlogBySlug($slug: String!) {
+      blog(where: { slug: $slug }) {
+        title
+        content {
+          html
         }
       }
-    `;
-  
-    try {
-      const result = await graphqlAPI.request<{ blog: BlogContent }>(query, { slug });
-      return result.blog;
-    } catch (error) {
-      console.error("Error fetching blog by slug:", error);
-      return null;
     }
-  };
-  
-  
+  `;
+
+  const variables = { slug };
+
+  try {
+    const result = await graphqlAPI.request<{ blog: BlogDetail }>(query, variables);
+    return result.blog;
+  } catch (error) {
+    console.error("Error fetching blog:", error);
+    return null;
+  }
+};
+
 
   export const fetchAllBlogs = async (): Promise<Blog[]> => {
     const query = gql`

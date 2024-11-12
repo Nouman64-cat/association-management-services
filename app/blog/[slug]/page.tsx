@@ -1,22 +1,23 @@
 // app/blog/[slug]/page.tsx
 import { fetchBlogBySlug } from "@/graphql/blogs_gql";
+import { BlogDetail } from "@/interfaces/blogs";
 import { notFound } from "next/navigation";
 
 interface BlogPageProps {
-  params: {
-    slug: string;
-  };
+  params: Promise<{ slug: string }>; // Define params as a Promise type
 }
 
 const BlogPage = async ({ params }: BlogPageProps) => {
-  const { slug } = await params; // Explicitly await params here
+  const { slug } = await params; // Await params to resolve the promise
 
-  if (!slug) {
-    notFound();
-    return;
+  let blog: BlogDetail | null = null;
+
+  try {
+    blog = await fetchBlogBySlug(slug);
+    if (!blog) throw new Error("Blog not found");
+  } catch (err) {
+    console.error("Blog not fetched", err);
   }
-
-  const blog = await fetchBlogBySlug(slug);
 
   if (!blog) {
     notFound();
