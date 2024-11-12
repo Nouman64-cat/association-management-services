@@ -1,12 +1,22 @@
-import React from 'react';
+"use client";
+import React, { useEffect, useState } from 'react';
+import Link from 'next/link';
+import { fetchAllBlogs } from '@/graphql/blogs_gql';
+import { Blog } from '@/interfaces/blogs';
 
-const blogPosts = [
-  { title: "Top 5 Membership Engagement Strategies", date: "October 10, 2024" },
-  { title: "Legal Updates for Nonprofits", date: "September 15, 2024" },
-  { title: "Effective Communication Tactics for Associations", date: "August 30, 2024" }
-];
 
 const BlogSection: React.FC = () => {
+  const [blogPosts, setBlogPosts] = useState<Blog[]>([]);
+
+  useEffect(() => {
+    const loadBlogs = async () => {
+      const data = await fetchAllBlogs();
+      setBlogPosts(data);
+    };
+
+    loadBlogs();
+  }, []);
+
   return (
     <section className="py-16 px-4 bg-light-grayish text-center">
       <div className="max-w-4xl mx-auto">
@@ -16,14 +26,13 @@ const BlogSection: React.FC = () => {
           </span>
         </h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-          {blogPosts.map((post, index) => (
-            <div
-              key={index}
-              className="bg-white p-8 rounded-3xl shadow-lg hover:shadow-xl transition-shadow duration-300 text-left"
-            >
-              <h3 className="text-xl font-semibold font-axiforma mb-4 text-heading">{post.title}</h3>
-              <p className="text-gray-500">{post.date}</p>
-            </div>
+          {blogPosts.map((post) => (
+            <Link href={`/blog/${post.slug}`} key={post.id}>
+              <div className="bg-white p-8 rounded-3xl shadow-lg hover:shadow-xl transition-shadow duration-300 text-left cursor-pointer">
+                <h3 className="text-xl font-semibold font-axiforma mb-4 text-heading">{post.title}</h3>
+                <p className="text-gray-500">{post.excerpt}</p>
+              </div>
+            </Link>
           ))}
         </div>
       </div>

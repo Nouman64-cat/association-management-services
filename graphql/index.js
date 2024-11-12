@@ -1,4 +1,4 @@
-import { GraphQLClient, gql } from 'graphql-request';
+import { GraphQLClient, gql } from "graphql-request";
 
 const URL = process.env.NEXT_PUBLIC_GRAPHQL_URL_ENDPOINT;
 const graphqlAPI = new GraphQLClient(URL);
@@ -27,26 +27,25 @@ export const fetchTestimonials = async () => {
   }
 };
 
-
 export const fetchServiceDetails = async () => {
-    const query = gql`
-      query GetServiceDetails {
-        serviceDetails {
-          serviceName
-          description
-          category
-        }
+  const query = gql`
+    query GetServiceDetails {
+      serviceDetails {
+        serviceName
+        description
+        category
       }
-    `;
-  
-    try {
-      const result = await graphqlAPI.request(query);
-      return result.serviceDetails;
-    } catch (error) {
-      console.error("Error fetching service details:", error);
-      return [];
     }
-  };
+  `;
+
+  try {
+    const result = await graphqlAPI.request(query);
+    return result.serviceDetails;
+  } catch (error) {
+    console.error("Error fetching service details:", error);
+    return [];
+  }
+};
 
 // New function to fetch team bios
 export const fetchTeamBios = async () => {
@@ -72,7 +71,6 @@ export const fetchTeamBios = async () => {
   }
 };
 
-
 export const fetchGuides = async () => {
   const query = gql`
     query GetGuides {
@@ -97,3 +95,36 @@ export const fetchGuides = async () => {
     return [];
   }
 };
+
+export const fetchCaseStudies = async () => {
+  const query = gql`
+    query GetCaseStudies {
+      caseStudies {
+        id
+        title
+        description {
+          text
+        }
+        image {
+          url
+        }
+        link {
+          fileName
+          url
+        }
+        clientName
+        results
+      }
+    }
+  `;
+
+  try {
+    const result = await graphqlAPI.request(query);
+    return result.caseStudies;
+  } catch (error) {
+    console.error("Error fetching case studies:", error);
+    return [];
+  }
+};
+
+
