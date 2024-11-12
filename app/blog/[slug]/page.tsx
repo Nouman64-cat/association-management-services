@@ -8,8 +8,8 @@ interface BlogPageProps {
   };
 }
 
-const BlogPage = async ({ params }: Promise<BlogPageProps>) => {
-  const { slug } = await params; // Await params directly
+const BlogPage = async ({ params }: BlogPageProps) => {
+  const slug = params.slug; // Access params directly without awaiting
 
   if (!slug) {
     notFound();
